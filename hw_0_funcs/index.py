@@ -2,27 +2,22 @@
 # -*- coding: utf-8 -*-
 
 from math import pow
-from datetime import datetime
-
-
+import time
 #  --- ЗАДАНИЕ 1 ---
 
-def time(func):
+def showSpendedTime(func):
     def wrapper(*args, **kwargs):
-        start = datetime.timestamp(datetime.now())
+        start = time.time()
         res = func(*args, **kwargs)
-        finish = datetime.timestamp(datetime.now()) - start
-        print(finish)
+        finish = time.time() - start
+        print('Finished in: %.6f ms' % finish)
         return res
     return wrapper
 
 # возвращает список переданных чиел в квадрат
-@time
+@showSpendedTime
 def powList(*args, pwr = 2):
-    poweredList = [] 
-    for i in args:
-        poweredList.append(pow(i,pwr))
-    return poweredList
+    return [int(pow(i, pwr)) for i in args]
 
 # возвращает простое целое число если
 # вспомогательная функция для фильтрации
@@ -40,7 +35,7 @@ def getPrime(num):
         return num
 
 # возвращает список отфильтрованных чисел
-@time
+@showSpendedTime
 def evenOddPrime(*args, **kwargs):
     result = []
     if kwargs['numType'] == 'even':
