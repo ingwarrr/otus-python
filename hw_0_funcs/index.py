@@ -3,15 +3,15 @@
 
 from math import pow
 import time
-
 #  --- ЗАДАНИЕ 1 ---
 
 def showSpendedTime(func):
     def wrapper(*args, **kwargs):
         start = time.time()
+        res = func(*args, **kwargs)
         finish = time.time() - start
         print('Finished in: %.6f ms' % finish)
-        return func(*args, **kwargs)
+        return res
     return wrapper
 
 # возвращает список переданных чиел в квадрат
