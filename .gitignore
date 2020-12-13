@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+*.bak
+*.diff
+.giginore
+*.log
