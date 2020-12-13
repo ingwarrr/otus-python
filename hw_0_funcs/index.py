@@ -48,5 +48,5 @@ def evenOddPrime(*args, **kwargs):
     elif kwargs['numType'] == 'odd':
         result = list(filter(lambda x: x%2, args))
     elif kwargs['numType'] == 'prime':
-        result = list(filter(lambda x: getPrime(x), args))
+        result = list(filter(getPrime, args))
     return result
