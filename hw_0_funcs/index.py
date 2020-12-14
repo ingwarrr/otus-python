@@ -2,44 +2,53 @@
 # -*- coding: utf-8 -*-
 
 from math import pow
-import time
+from time import time
 
 #  --- ЗАДАНИЕ 1 ---
 
-def showSpendedTime(func):
+
+def show_spent_time(func):
     def wrapper(*args, **kwargs):
-        start = time.time()
+        start = time()
         res = func(*args, **kwargs)
-        finish = time.time() - start
+        finish = time() - start
         print('Finished in: %.6f ms' % finish)
         return res
     return wrapper
 
 # возвращает список переданных чиел в квадрат
-@showSpendedTime
-def powList(*args, pwr = 2):
+
+
+@show_spent_time
+def pow_list(*args, pwr=2):
     return [int(pow(i, pwr)) for i in args]
 
 # возвращает простое целое число если
 # вспомогательная функция для фильтрации
-def getPrime(num):
-    deviders = [2,3]
-    isComplex = True
 
-    if num > 1 and not num in deviders:        
-        isComplex = [i for i in deviders if num % i == 0]        
-        return num if not isComplex else None
+
+def getPrime(num):
+    deviders = [2, 3]
+    is_complex = True
+
+    if num > 1 and not num in deviders:
+        is_complex = [i for i in deviders if num % i == 0]
+        return num if not is_complex else None
     elif num in deviders:
         return num
 
 # возвращает список отфильтрованных чисел
-@showSpendedTime
-def evenOddPrime(*args, **kwargs):
+
+
+@show_spent_time
+def even_odd_prime(*args, **kwargs):
     switch = {
-        'even': list(filter(lambda x: not x%2, args)),
-        'odd': list(filter(lambda x: x%2, args)),
+        'even': list(filter(lambda x: not x % 2, args)),
+        'odd': list(filter(lambda x: x % 2, args)),
         'prime': list(filter(getPrime, args))
     }
-    return switch[kwargs['numType']]
-    
-print(evenOddPrime(*[i for i in range(102)], numType = 'prime'))
+    return switch[kwargs['num_type']]
+
+
+if __name__ == '__main__':
+    print(even_odd_prime(*[i for i in range(102)], num_type='prime'))
