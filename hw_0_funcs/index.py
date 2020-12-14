@@ -16,17 +16,16 @@ def show_spent_time(func):
         return res
     return wrapper
 
-# возвращает список переданных чиел в квадрат
 
-
+# возвращает список переданных чисел в квадрате
+# либо в стпени, переданной в именованном аттрибуте pwr
 @show_spent_time
 def pow_list(*args, pwr=2):
     return [int(pow(i, pwr)) for i in args]
 
+
 # возвращает простое целое число если
 # вспомогательная функция для фильтрации
-
-
 def getPrime(num):
     deviders = [2, 3]
     is_complex = True
@@ -37,9 +36,8 @@ def getPrime(num):
     elif num in deviders:
         return num
 
-# возвращает список отфильтрованных чисел
 
-
+# возвращает список чисел, отфильтрованных согласно заданию
 @show_spent_time
 def even_odd_prime(*args, **kwargs):
     switch = {
