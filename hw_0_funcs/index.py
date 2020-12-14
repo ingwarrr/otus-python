@@ -27,7 +27,7 @@ def pow_list(*args, pwr=2):
 # возвращает простое целое число если
 # вспомогательная функция для фильтрации
 def get_prime(num):
-    deviders = [2, 3]
+    deviders = [2, 3, 5, 7]
     is_complex = True
 
     if num > 1 and not num in deviders:
@@ -49,4 +49,4 @@ def even_odd_prime(*args, **kwargs):
 
 
 if __name__ == '__main__':
-    print(even_odd_prime(*[i for i in range(102)], num_type='prime'))
+    print(even_odd_prime(*[i for i in range(200)], num_type='prime'))
