@@ -26,7 +26,7 @@ def pow_list(*args, pwr=2):
 
 # возвращает простое целое число если
 # вспомогательная функция для фильтрации
-def getPrime(num):
+def get_prime(num):
     deviders = [2, 3]
     is_complex = True
 
@@ -43,7 +43,7 @@ def even_odd_prime(*args, **kwargs):
     switch = {
         'even': list(filter(lambda x: not x % 2, args)),
         'odd': list(filter(lambda x: x % 2, args)),
-        'prime': list(filter(getPrime, args))
+        'prime': list(filter(get_prime, args))
     }
     return switch[kwargs['num_type']]
 
